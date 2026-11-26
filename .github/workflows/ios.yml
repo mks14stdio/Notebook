@@ -5,11 +5,19 @@ on:
   push:
     branches: [main, develop]
     paths:
-      - 'ios/**'
+      - 'iosApp/**'
+      - 'shared/**'
+      - 'gradle/**'
+      - '*.gradle.kts'
+      - 'gradle.properties'
       - '.github/workflows/ios.yml'
   pull_request:
     paths:
-      - 'ios/**'
+      - 'iosApp/**'
+      - 'shared/**'
+      - 'gradle/**'
+      - '*.gradle.kts'
+      - 'gradle.properties'
       - '.github/workflows/ios.yml'
 
 concurrency:
@@ -19,19 +27,28 @@ concurrency:
 jobs:
   build:
     runs-on: macos-latest
-    defaults:
-      run:
-        working-directory: ios
     steps:
       - uses: actions/checkout@v4
 
-      - run: xcodebuild -list
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: konan-${{ runner.os }}-${{ hashFiles('**/*.gradle.kts', 'gradle/libs.versions.toml') }}
+          restore-keys: konan-${{ runner.os }}-
 
       - name: Build for simulator (без подписи)
         run: |
+          chmod +x ./gradlew
           xcodebuild build \
-            -project Notebook.xcodeproj \
-            -scheme Notebook \
+            -project iosApp/iosApp.xcodeproj \
+            -scheme iosApp \
             -configuration Debug \
             -sdk iphonesimulator \
             -destination 'generic/platform=iOS Simulator' \
