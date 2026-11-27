@@ -18,6 +18,7 @@ import androidx.navigation3.ui.NavDisplay
 fun AppNavHost(modifier: Modifier = Modifier) {
     val backStack = rememberNavBackStack(navConfig, Home)
     NavDisplay(
+        modifier = modifier,
         backStack = backStack,
         onBack = { backStack.removeLastOrNull() },
         entryProvider = entryProvider {
