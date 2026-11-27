@@ -2,12 +2,8 @@
 name: Android build
 
 on:
-  push:
-    branches: [main, develop]
-    paths-ignore:
-      - 'iosApp/**'
-      - '**.md'
   pull_request:
+    branches: [main, develop]
     paths-ignore:
       - 'iosApp/**'
       - '**.md'

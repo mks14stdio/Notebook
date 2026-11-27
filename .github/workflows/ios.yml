@@ -2,16 +2,8 @@
 name: iOS build
 
 on:
-  push:
-    branches: [main, develop]
-    paths:
-      - 'iosApp/**'
-      - 'shared/**'
-      - 'gradle/**'
-      - '*.gradle.kts'
-      - 'gradle.properties'
-      - '.github/workflows/ios.yml'
   pull_request:
+    branches: [main, develop]
     paths:
       - 'iosApp/**'
       - 'shared/**'
