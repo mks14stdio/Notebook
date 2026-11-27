@@ -17,7 +17,8 @@ material3 = "1.12.0-alpha03"
 
 koin = "4.2.2"
 koin-compiler = "1.2.1"
-
+multiplatform-nav3-ui = "1.2.0"
+compose-multiplatform-lifecycle = "2.11.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -46,6 +47,8 @@ koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmo
 
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 
+jetbrains-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "multiplatform-nav3-ui" }
+jetbrains-lifecycle-viewmodelNavigation3 = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "compose-multiplatform-lifecycle" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

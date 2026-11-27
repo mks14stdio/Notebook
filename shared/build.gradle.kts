@@ -47,6 +47,8 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose)
 
+            implementation(libs.jetbrains.navigation3.ui)
+
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
@@ -55,6 +57,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.jetbrains.lifecycle.viewmodelNavigation3)
         }
         commonTest.dependencies {
             implementation(libs.koin.test)
