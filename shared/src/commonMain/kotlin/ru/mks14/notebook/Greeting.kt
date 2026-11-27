@@ -1,7 +1,10 @@
 package ru.mks14.notebook
 
-class Greeting {
-    private val platform = getPlatform()
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+
+class Greeting : KoinComponent {
+    private val platform: Platform by inject()
 
     fun greet(): String {
         return sayHello(platform.name)
